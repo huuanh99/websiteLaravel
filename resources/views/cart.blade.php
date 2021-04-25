@@ -32,7 +32,7 @@
 						<td>
 							<form action="{{ route('updatecart') }}" method="post">
 								@csrf
-								<input min="1" type="number" name="quantity" value="{{ $item->quantity }}" />
+								<input min="1" max="{{ $item->totalquantity }}" type="number" name="quantity" value="{{ $item->quantity }}" />
 								<input type="hidden" name="id" value="{{ $item->id }}" />
 								<input type="submit" name="submit" value="Update" />
 							</form>

@@ -12,7 +12,7 @@ class customer extends Model
         'name',
         'address',
         'city',
-        'country',
+        'country_id',
         'zipcode',
         'phone',
         'email',
@@ -23,5 +23,9 @@ class customer extends Model
     public function orders()
     {
         return $this->hasMany(order::class, 'customer_id');
+    }
+
+    public function country(){
+        return $this->belongsTo(country::class,'country_id');
     }
 }

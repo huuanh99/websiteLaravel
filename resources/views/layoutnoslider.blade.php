@@ -1,28 +1,3 @@
-{{-- <?php
-header("Cache-Control: no-cache, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
-header("Cache-Control: max-age=2592000");
-include './lib/session.php';
-Session::init();
-include_once('lib/database.php');
-include_once('helpers/format.php');
-$db = new Database();
-$fm = new Format();
-spl_autoload_register(function ($class) {
-    include_once "classes/" . $class . ".php";
-});
-$ct = new cart();
-$us = new user();
-$cat = new category();
-$cs = new customer();
-$product = new product();
-if (isset($_GET['logout']) && $_GET['logout'] == true) {
-    unset($_SESSION['customer']);
-    echo "<script>window.location='login.php'</script>";
-}
-?> --}}
-
 <!DOCTYPE HTML>
 
 <head>
@@ -95,12 +70,11 @@ if (isset($_GET['logout']) && $_GET['logout'] == true) {
         <li><a href="{{ route('index') }}">Home</a></li>
         <li><a href="{{ route('products') }}">Products</a></li>
         <li><a href="{{ route('topbrand') }}">Top Brands</a></li>
-        @if (Session::get('customer')==null)
-        @else
+        @if (Session::get('customer')!=null)
         <li><a href='{{ route('profile') }}'>Profile</a></li>
         <li><a href='{{ route('order') }}'>Your ORDER</a></li>
+        <li><a href="{{ route('changepassworduser') }}">CHANGE PASWORD</a></li>
         @endif
-        <li><a href="{{ route('contact') }}">Contact</a></li>
         <div class="clear"></div>
       </ul>
     </div>

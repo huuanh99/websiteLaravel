@@ -12,12 +12,12 @@
 
 					<tr>
 						<th width="5%">ID</th>
-						<th width="15%">Product Name</th>
+						<th width="25%">Product Name</th>
 						<th width="10%">Price</th>
 						<th width="10%">Image</th>
 						<th width="10%">Category</th>
 						<th width="10%">Brand</th>
-						<th width="20%">Description</th>
+						<th width="10%">Quantity</th>
 						<th width="10%">Type</th>
 						<th width="10%">Action</th>
 					</tr>
@@ -27,12 +27,12 @@
 					@foreach ($products as $key => $item)
 					<tr class="odd gradeX">
 						<td>{{ ++$key }}</td>
-						<td>{{ $fm->textShorten($item->productName,50) }}</td>
+						<td>{{ $fm->textShorten($item->productName,40) }}</td>
 						<td>{{ $fm->vndFormat($item->price) }}</td>
 						<td><img width="80" src="{{ asset('uploads') }}/{{ $item->image }}" alt=""></td>
 						<td>{{ $item->category->catName }}</td>
 						<td>{{ $item->brand->brandName }}</td>
-						<td>{{ $fm->textShorten($item->product_desc,50) }}</td>
+						<td>{{ $item->quantity }}</td>
 						<td>@if ($item->type==1)
 								Featured
 						@else

@@ -1,16 +1,3 @@
-{{-- <?php
-include_once 'inc/header.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-	$insertCustomer=$cs->insert_customer($_POST);
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-	$loginCustomer=$cs->login_customer($_POST);
-}
-if(isset($_SESSION['customer'])){
-  echo "<script>window.location='order.php'</script>";
-}
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">
@@ -31,12 +18,13 @@ if(isset($_SESSION['customer'])){
 		</div>
 		<div class="register_account">
 			<h3>Register New Account</h3>
-			<?php
-			if(isset($insertCustomer)){
-				echo $insertCustomer;
-			}
-			?>
-			<form method="POST" action="">
+			<span class="success">
+				@if (Session::get('register')!=null)
+				{{ Session::get('register') }}
+				@endif
+			</span>
+			<form method="POST" action="{{ route('register') }}">
+				@csrf
 				<table>
 					<tbody>
 						<tr>
@@ -53,7 +41,7 @@ if(isset($_SESSION['customer'])){
 									<input required name="zipcode" type="text" placeholder="Zipcode">
 								</div>
 								<div>
-									<input required name="email" type="text" placeholder="Email">
+									<input required name="email" type="email" placeholder="Email">
 								</div>
 							</td>
 							<td>
@@ -62,20 +50,9 @@ if(isset($_SESSION['customer'])){
 								</div>
 								<div>
 									<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
-										<option value="null">Select a Country</option>
-										<option value="AF">Afghanistan</option>
-										<option value="AL">Albania</option>
-										<option value="DZ">Algeria</option>
-										<option value="AR">Argentina</option>
-										<option value="AM">Armenia</option>
-										<option value="AW">Aruba</option>
-										<option value="AU">Australia</option>
-										<option value="AT">Austria</option>
-										<option value="AZ">Azerbaijan</option>
-										<option value="BS">Bahamas</option>
-										<option value="BH">Bahrain</option>
-										<option value="BD">Bangladesh</option>
-
+										@foreach ($countries as $item)
+										<option value="{{ $item->id }}">{{ $item->country_name }}</option>
+										@endforeach
 									</select>
 								</div>
 
@@ -101,5 +78,3 @@ if(isset($_SESSION['customer'])){
 	</div>
 </div>
 @endsection
-
-

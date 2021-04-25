@@ -1,11 +1,3 @@
-{{-- <?php
-include_once 'inc/header.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$keyword=$_POST['keyword'];
-	$searchProduct = $product->search_product($keyword);
-}
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">

@@ -24,7 +24,8 @@ Route::get('/profile', [CommercialController::class, 'profile'])->name('profile'
 Route::get('/order', [CommercialController::class, 'order'])->name('order');
 Route::get('/logout', [CommercialController::class, 'logout'])->name('logout');
 Route::get('/cart', [CommercialController::class, 'cart'])->name('cart');
-Route::get('/contact', [CommercialController::class, 'contact'])->name('contact');
+Route::get('/changepassword', [CommercialController::class, 'changepassword'])->name('changepassworduser');
+Route::get('/receiveOrder/{id}', [CommercialController::class, 'receiveOrder'])->name('receiveOrder');
 Route::get('/topbrand', [CommercialController::class, 'topbrand'])->name('topbrand');
 Route::get('/products', [CommercialController::class, 'products'])->name('products');
 Route::get('/payment', [CommercialController::class, 'payment'])->name('payment');
@@ -38,13 +39,15 @@ Route::post('/search', [CommercialController::class, 'search'])->name('search');
 Route::post('/addtocart', [CartController::class, 'addtocart'])->name('addtocart');
 Route::post('/insertOrder', [CartController::class, 'insertOrder'])->name('insertOrder');
 Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+Route::post('/register', [CommercialController::class, 'register'])->name('register');
+Route::post('/changingpassworduser', [CommercialController::class, 'changingpassworduser'])->name('changingpassworduser');
+
 
 Route::prefix('admin')->group(function () {
   Route::get('', [AdminController::class,'index'])->name('adminindex');
   Route::get('/changepassword', [AdminController::class,'changepassword'])->name('changepassword');
   Route::get('/inbox', [AdminController::class,'inbox'])->name('inbox');
   Route::get('/handleOrder/{id}', [AdminController::class, 'handleOrder'])->name('handleOrder');
-  Route::get('/receiveOrder/{id}', [CommercialController::class, 'receiveOrder'])->name('receiveOrder');
 
   Route::get('/catlist', [AdminController::class,'catlist'])->name('catlist');
   Route::get('/brandlist', [AdminController::class,'brandlist'])->name('brandlist');

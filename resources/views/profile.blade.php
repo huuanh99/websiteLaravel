@@ -1,13 +1,3 @@
-{{-- <?php
-include_once 'inc/header.php';
-if (!isset($_SESSION['customer'])) {
-  echo "<script>window.location='login.php'</script>";
-} 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
-	$updateCustomer=$cs->update_customer($_POST,$_SESSION['customer']);
-}
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">
@@ -23,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
       @csrf
       <table class="tblone">
         <tr>
+          <span class="success">
           @if (Session::get('message')!=null)
           {{ Session::get('message') }}
-          {{ Session::forget('message') }}
           @endif
-
+          </span>
         </tr>
        
             <tr>
@@ -51,9 +41,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
               <td><input required type="text" name="phone" id="" value="{{ Session::get('customer')->phone }}"></td>
             </tr>
             <tr>
+              <td>COUNTRY</td>
+              <td>:</td>
+              <td>
+                <select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
+                  @foreach ($countries as $item)
+                  @if (Session::get('customer')->country_id==$item->id)
+                  <option selected value="{{ $item->id }}">{{ $item->country_name }}</option>
+                  @else
+                  <option value="{{ $item->id }}">{{ $item->country_name }}</option>
+                  @endif
+                  @endforeach
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>CITY</td>
+              <td>:</td>
+              <td><input required type="text" name="city" id="" value="{{ Session::get('customer')->city }}"></td>
+            </tr>
+            <tr>
               <td>EMAIL</td>
               <td>:</td>
-              <td><input required type="text" name="email" id="" value="{{ Session::get('customer')->email }}"></td>
+              <td><input required type="email" name="email" id="" value="{{ Session::get('customer')->email }}"></td>
             </tr>
             <tr>
             <td colspan="3"><input type="submit" name="update" value="UPDATE"> </td>

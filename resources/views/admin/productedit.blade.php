@@ -23,6 +23,14 @@
           </tr>
           <tr>
             <td>
+              <label>Quantity</label>
+            </td>
+            <td>
+              <input value="{{ $product->quantity }}" required name="quantity" type="number" class="medium" />
+            </td>
+          </tr>
+          <tr>
+            <td>
               <label>Category</label>
             </td>
             <td>

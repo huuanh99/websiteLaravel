@@ -69,13 +69,11 @@
         <li><a href="{{ route('index') }}">Home</a></li>
         <li><a href="{{ route('products') }}">Products</a></li>
         <li><a href="{{ route('topbrand') }}">Top Brands</a></li>
-        @if (Session::get('customer')==null)
-        @else
+        @if (Session::get('customer')!=null)
         <li><a href='{{ route('profile') }}'>Profile</a></li>
         <li><a href='{{ route('order') }}'>Your ORDER</a></li>
+        <li><a href="{{ route('changepassworduser') }}">CHANGE PASWORD</a></li>
         @endif
-
-        <li><a href="{{ route('contact') }}">Contact</a></li>
         <div class="clear"></div>
       </ul>
     </div>

@@ -1,15 +1,3 @@
-{{-- <?php
-if (isset($_GET['proId']) && is_numeric($_GET['proId'])) {
-	$id = $_GET['proId'];
-} else {
-	echo "<script>window.location='404/404.php'</script>";
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-	$quantity=$_POST['quantity'];
-	$addToCart = $ct->add_to_cart($id,$quantity);
-}
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">
@@ -26,12 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 						<p>Price: <span>{{ $fm->vndFormat($product->price) }}</span></p>
 						<p>Category: <span>{{ $product->category->catName }}</span></p>
 						<p>Brand:<span>{{ $product->brand->brandName }}</span></p>
+						<p>Số lượng sản phẩm có sẵn:<span>{{ $product->quantity }}</span></p>
 					</div>
 					<div class="add-cart">
 						<form action="{{ route('addtocart')}}" method="post">
 							@csrf
 							<input type="hidden" name="id" value="{{ $product->id }}">
-							<input type="number" class="buyfield" name="quantity" value="1" min="1" />
+							<input type="number" class="buyfield" name="quantity" value="1" min="1" max="{{ $product->quantity }}" />
 							<input type="submit" class="buysubmit" name="submit" value="Buy Now" />
 						</form>
 					</div>

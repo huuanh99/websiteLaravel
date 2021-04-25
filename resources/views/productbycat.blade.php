@@ -1,14 +1,3 @@
-{{-- <?php
-include_once 'inc/header.php';
-if (isset($_GET['catid']) && is_numeric($_GET['catid'])) {
-	$id = $_GET['catid'];
-	$category = $cat->getCatById($id);
-} else {
-	echo "<script>window.location='index.php'</script>";
-}
-
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">

@@ -1,15 +1,4 @@
-﻿{{-- <?php
-include_once 'inc/header.php';
-include_once 'inc/sidebar.php';
-include_once '../classes/category.php';
-$cat = new category();
-if (isset($_GET['delId']) && is_numeric($_GET['delId'])) {
-	$id = $_GET['delId'];
-	$delCat = $cat->del_category($id);
-} 
-?> --}}
-
-@extends('admin.layout')
+﻿@extends('admin.layout')
 @section('content')
 <div class="grid_10">
 	<div class="box round first grid">

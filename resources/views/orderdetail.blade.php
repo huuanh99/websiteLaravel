@@ -1,16 +1,3 @@
-{{-- <?php
-include_once 'inc/header.php';
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = $_GET['id'];
-} else {
-	echo "<script>window.location='order.php'</script>";
-}
-if (!isset($_SESSION['customer'])) {
-	echo "<script>window.location='login.php'</script>";
-}
-$subtotal = 0;
-?> --}}
-
 @extends('layoutnoslider')
 @section('content')
 <div class="main">
