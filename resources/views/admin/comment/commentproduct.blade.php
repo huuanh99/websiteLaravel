@@ -21,8 +21,11 @@
 					<tr class="odd gradeX">
 						<td>{{ ++$key }}</td>
 						<td>{{ $fm->textShorten($item->productName,60) }}</td>
-						<td><img width="100" src="{{ asset('uploads') }}/{{ $item->image }}" alt=""></td>
-						<td>{{ count($item->comments) }} comment</td>
+						<td>
+							<a href="{{ route('details',['id'=>$item->id]) }}">
+								<img height="80" src="{{ asset('uploads') }}/{{ $item->image }}" alt="" />
+							</a>
+						</td>						<td>{{ count($item->comments) }} comment</td>
 						<td><a href="{{ route('commentlist',['id'=>$item->id]) }}">Watch comments</a></td>
 					</tr>
 					@endforeach

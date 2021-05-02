@@ -26,23 +26,27 @@
 						<td>{{ ++$key }}</td>
 						<td>{{ $fm->textShorten($item->productName,40) }}</td>
 						<td>{{ $fm->vndFormat($item->price) }}</td>
-						<td><img width="80" src="{{ asset('uploads') }}/{{ $item->image }}" alt=""></td>
+						<td>
+							<a href="{{ route('details',['id'=>$item->id]) }}">
+								<img height="80" src="{{ asset('uploads') }}/{{ $item->image }}" alt="" />
+							</a>
+						</td>
 						<td>{{ $item->category->catName }}</td>
 						<td>{{ $item->brand->brandName }}</td>
 						<td>{{ $item->quantity }}</td>
 						<td>@if ($item->type==1)
-								Featured
-						@else
-								Non-Featured
-						@endif</td>
+							Featured
+							@else
+							Non-Featured
+							@endif</td>
 						<td><a href="{{ route('productedit',['id'=>$item->id]) }}">Edit</a> ||
-								<a onclick="return confirm('Do you want to delete? You still can restore it')" 
+							<a onclick="return confirm('Do you want to delete? You still can restore it')"
 								href="{{ route('softdelete',['id'=>$item->id]) }}">Delete</a>
 						</td>
 					</tr>
 					@endforeach
-						
-					
+
+
 				</tbody>
 			</table>
 

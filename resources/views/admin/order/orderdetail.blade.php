@@ -5,8 +5,8 @@
     <h2>
       @if ($order->status==0)
       <a onclick="return confirm('Bạn xác nhận đã xử lý đơn hàng')"
-         href="{{ route('handleOrder',['id'=>$order->id]) }}">
-         Trạng thái : Chờ xử lý
+        href="{{ route('handleOrder',['id'=>$order->id]) }}">
+        Trạng thái : Chờ xử lý
       </a>
       @elseif($order->status==1)
       Trạng thái : Đang vận chuyển
@@ -66,7 +66,11 @@
           <tr class="odd gradeX">
             <td>{{ ++$key }}</td>
             <td>{{ $fm->textShorten($item->product->productName,40) }}</td>
-            <td><img width="100" src="{{ asset('uploads') }}/{{ $item->product->image }}" alt=""></td>
+            <td>
+              <a href="{{ route('details',['id'=>$item->product->id]) }}">
+                <img height="80" src="{{ asset('uploads') }}/{{ $item->product->image }}" alt="" />
+              </a>
+            </td>
             <td>{{ $fm->vndFormat($item->product->price) }}</td>
             <td>{{ $item->quantity }}</td>
             <td>{{ $fm->vndFormat($item->product->price*$item->quantity) }}</td>
