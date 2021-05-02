@@ -9,12 +9,14 @@ class product extends Model
 {
     protected $fillable = [
         'productName',
+        'status',
         'catId',
         'brandId',
         'quantity',
         'product_desc',
         'type',
         'price',
+        'oldprice',
         'image'
     ];
     protected $table = 'tbl_product';
@@ -32,5 +34,15 @@ class product extends Model
     public function orderdetails()
     {
         return $this->hasMany(orderdetails::class, 'product_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(comment::class, 'product_id');
+    }
+
+    public function imports()
+    {
+        return $this->hasMany(import::class, 'product_id');
     }
 }

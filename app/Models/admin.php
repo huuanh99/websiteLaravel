@@ -11,8 +11,11 @@ class admin extends Model
     protected $fillable = [
         'adminName',
         'adminEmail',
-        'adminUser',
-        'adminPass'
+        'adminPass',
+        'level',
+        'status',
+        'remember_token',
+        'is_activated'
     ];
     protected $table = 'tbl_admin';
 

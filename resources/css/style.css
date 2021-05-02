@@ -619,8 +619,8 @@ input.grey{
 	margin-left: 0; 
 } 
 .images_1_of_4 {
-	width: 20.8%;
-	padding:1.5%;
+	width: 22.8%;
+	padding:0.5%;
 	text-align:center;
 	position:relative; 
 }
@@ -658,10 +658,15 @@ input.grey{
 	text-decoration:line-through;
 }
 .images_1_of_4  p span.price{
-	font-size:18px;
+	font-size:14px;
 	font-family: 'Monda', sans-serif;
 	color: #CC3636;
-	margin-left:15px;
+}
+.images_1_of_4  p span.oldprice{
+	font-size:14px;
+	font-family: 'Monda', sans-serif;
+	color: black;
+  text-decoration: line-through;
 }
 .images_1_of_4 .button {
   float: left;
@@ -797,28 +802,28 @@ input.grey{
 	cursor:pointer;
 }
 .social-icons li.facebook {
-	background:url(../images/icon-2.png) no-repeat 0px  -29px;
+	background:url(../../images/icon-2.png) no-repeat 0px  -29px;
 }
 .social-icons li.facebook:hover {
-	background:url(../images/icon-2.png) no-repeat 0px  0px;
+	background:url(../../images/icon-2.png) no-repeat 0px  0px;
 }
 .social-icons li.twitter {
-	background:url(../images/icon-3.png) no-repeat 0px  -29px;
+	background:url(../../images/icon-3.png) no-repeat 0px  -29px;
 }
 .social-icons li.twitter:hover {
-	background:url(../images/icon-3.png) no-repeat 0px  0px;
+	background:url(../../images/icon-3.png) no-repeat 0px  0px;
 }
 .social-icons li.googleplus {
-	background:url(../images/icon-4.png) no-repeat 0px  -29px;
+	background:url(../../images/icon-4.png) no-repeat 0px  -29px;
 }
 .social-icons li.googleplus:hover {
-	background:url(../images/icon-4.png) no-repeat 0px  0px;
+	background:url(../../images/icon-4.png) no-repeat 0px  0px;
 }
 .social-icons li.contact {
-	background:url(../images/icon-1.png) no-repeat 0px  -29px;
+	background:url(../../images/icon-1.png) no-repeat 0px  -29px;
 }
 .social-icons li.contact:hover {
-	background:url(../images/icon-1.png) no-repeat 0px  0px;
+	background:url(../../images/icon-1.png) no-repeat 0px  0px;
 }
  .copy_right{
 	text-align:center;

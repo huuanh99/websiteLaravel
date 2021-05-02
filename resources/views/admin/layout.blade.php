@@ -4,6 +4,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/bootstrap.css') }}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/admin/reset.css') }}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/admin/text.css') }}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/admin/grid.css') }}" media="screen" />
@@ -51,7 +52,7 @@
           </div>
           <div class="floatleft marginleft10">
             <ul class="inline-ul floatleft">
-              <li>Hello {{ Session::get('adminName') }}</li>
+              <li>Hello {{ Session::get('admin')->adminName }}</li>
               <li><a href="{{ route('adminlogout') }}">Logout</a></li>
             </ul>
           </div>
@@ -64,8 +65,8 @@
     </div>
     <div class="grid_12">
       <ul class="nav main">
-        <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
-        <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
+        <li class="ic-dashboard"><a href="{{ route('adminindex') }}"><span>Dashboard</span></a> </li>
+        <li class="ic-form-style"><a href="{{ route('adminprofile') }}"><span>Admin Profile</span></a></li>
         <li class="ic-typography"><a href="{{ route('changepassword') }}"><span>Change Password</span></a></li>
         <li class="ic-grid-tables"><a href="{{ route('inbox') }}"><span>Xử lý đơn hàng</span></a></li>
         <li class="ic-charts"><a href=""><span>Visit Website</span></a></li>
@@ -94,29 +95,39 @@
               <ul class="submenu">
                 <li><a href="{{ route('productadd') }}">Thêm sản phẩm</a> </li>
                 <li><a href="{{ route('productlist') }}">Liệt kê sản phẩm</a> </li>
+                <li><a href="{{ route('productrestore') }}">Phục hồi sản phẩm</a> </li>
               </ul>
             </li>
-            <li><a class="menuitem">Site Option</a>
+            <li><a class="menuitem">Comments</a>
               <ul class="submenu">
-                <li><a href="titleslogan.php">Title & Slogan</a></li>
-                <li><a href="social.php">Social Media</a></li>
-                <li><a href="copyright.php">Copyright</a></li>
-
+                <li><a href="{{ route('commentproduct') }}">Xem comment sản phẩm</a> </li>           
               </ul>
             </li>
-            <li><a class="menuitem">Update Pages</a>
+            <li><a class="menuitem">Orders</a>
               <ul class="submenu">
-                <li><a>About Us</a></li>
-                <li><a>Contact Us</a></li>
+                <li><a href="{{ route('ordersuccess') }}">Đơn hàng thành công</a> </li>           
               </ul>
             </li>
-            <li><a class="menuitem">Slider Option</a>
+            <li><a class="menuitem">Slider</a>
               <ul class="submenu">
-                <li><a href="addslider.php">Add Slider</a> </li>
-                <li><a href="sliderlist.php">Slider List</a> </li>
+                <li><a href="{{ route('slideradd') }}">Thêm slider</a> </li>
+                <li><a href="{{ route('sliderlist') }}">Liệt kê slider</a> </li>
+                <li><a href="{{ route('sliderestore') }}">Phục hồi slider</a> </li>
               </ul>
             </li>
-
+            <li><a class="menuitem">Nhập hàng</a>
+              <ul class="submenu">
+                <li><a href="{{ route('importlist') }}">Xem danh sách nhập hàng</a></li>
+              </ul>
+            </li>
+            <li><a class="menuitem">User</a>
+              <ul class="submenu">
+                <li><a href="{{ route('userlist') }}">Thông tin user</a></li>
+                <li><a href="{{ route('adminlist') }}">Thông tin admin</a></li>
+                <li><a href="{{ route('adminadd') }}">Thêm admin</a></li>
+                <li><a href="{{ route('adminrestore') }}">Phục hồi admin</a></li>
+              </ul>
+            </li>
 
           </ul>
         </div>

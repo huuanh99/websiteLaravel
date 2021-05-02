@@ -35,19 +35,19 @@
         <div class="search_box">
           <form action="{{ route('search') }}" method="POST">
             @csrf
-            <input type="text" name="keyword" placeholder="Search for Products">
-            <input type="submit" value="SEARCH">
+            <input type="text" name="keyword" placeholder="Nhập từ khóa">
+            <input type="submit" value="TÌM KIẾM">
           </form>
         </div>
         <div class="shopping_cart">
           <div class="cart">
             <a href="{{ route('cart') }}" title="View my shopping cart" rel="nofollow">
-              <span class="cart_title">Cart</span>
+              <span class="cart_title">Giỏ hàng</span>
               <span class="no_product">
                 @if (Session::get('count')!=null)
                 ({{ Session::get('count') }} sản phẩm)
                 @else
-                (0 sản phẩm)
+                (Trống)
                 @endif
               </span>
             </a>
@@ -66,8 +66,8 @@
     </div>
     <div class="menu">
       <ul id="dc_mega-menu-orange" class="dc_mm-orange">
-        <li><a href="{{ route('index') }}">Home</a></li>
-        <li><a href="{{ route('products') }}">Products</a></li>
+        <li><a href="{{ route('index') }}">Trang chủ</a></li>
+        <li><a href="{{ route('products') }}">Sản phẩm</a></li>
         <li><a href="{{ route('topbrand') }}">Top Brands</a></li>
         @if (Session::get('customer')!=null)
         <li><a href='{{ route('profile') }}'>Profile</a></li>
@@ -93,8 +93,8 @@
         <section class="slider">
           <div class="flexslider">
             <ul class="slides">
-              @foreach ($slider_featured as $item)
-              <li><img src="uploads/{{ $item->image }}" alt="" /></li>
+              @foreach ($slider as $item)
+              <li><img src="{{ asset('uploads') }}/{{ $item->image }}" alt="" /></li>
               @endforeach
 
             </ul>
@@ -110,43 +110,38 @@
     <div class="wrapper">
       <div class="section group">
         <div class="col_1_of_4 span_1_of_4">
-          <h4>Information</h4>
+          <h4>Chăm sóc khách hàng</h4>
           <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Customer Service</a></li>
-            <li><a href="#"><span>Advanced Search</span></a></li>
-            <li><a href="#">Orders and Returns</a></li>
-            <li><a href="#"><span>Contact Us</span></a></li>
+            <li><a href="#"><span>Trung tâm trợ giúp</span> </a></li>
+            <li><a href="#"><span>Hướng dẫn mua hàng</span> </a></li>
+            <li><a href="#"><span>Hướng dẫn bán hàng</span></a></li>
+            <li><a href="#"><span>Chăm sóc khách hàng</span> </a></li>
+            <li><a href="#"><span>Chính sách bảo hành</span></a></li>
+            <li><a href="#"><span>Vận chuyển</span></a></li>
           </ul>
         </div>
         <div class="col_1_of_4 span_1_of_4">
-          <h4>Why buy from us</h4>
+          <h4>Thông tin</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="faq.html">Customer Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="contact.html"><span>Site Map</span></a></li>
-            <li><a href="preview.html"><span>Search Terms</span></a></li>
+            <li><a href="#"><span>Giới thiệu về shop</span></a></li>
+            <li><a href="#"><span>Tuyển dụng</span> </a></li>
+            <li><a href="#"><span>Chính sách bảo hành</span> </a></li>
+            <li><a href="#"><span>Chính hãng</span></a></li>
+            <li><a href="#"><span>Kênh người bán</span></a></li>
+            <li><a href="#"><span>Flash Sale</span></a></li>
           </ul>
         </div>
         <div class="col_1_of_4 span_1_of_4">
-          <h4>My account</h4>
+          <h4>Liên hệ chúng tôi</h4>
           <ul>
-            <li><a href="contact.html">Sign In</a></li>
-            <li><a href="index.html">View Cart</a></li>
-            <li><a href="#">My Wishlist</a></li>
-            <li><a href="#">Track My Order</a></li>
-            <li><a href="faq.html">Help</a></li>
+            <li><a href="#"><span>168 Nguyễn Trãi, Hà Đông, Hà Nội</span></a></li>
+            <li><a href="#"><span>Phone: 0945586004</span> </a></li>
+            <li><a href="#"><span>Cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ của chúng tôi</span> </a></li>
           </ul>
         </div>
         <div class="col_1_of_4 span_1_of_4">
-          <h4>Contact</h4>
-          <ul>
-            <li><span>+88-01713458599</span></li>
-            <li><span>+88-01813458552</span></li>
-          </ul>
+          <h4>Theo dõi chúng tôi</h4>
           <div class="social-icons">
-            <h4>Follow Us</h4>
             <ul>
               <li class="facebook"><a href="#" target="_blank"> </a></li>
               <li class="twitter"><a href="#" target="_blank"> </a></li>
@@ -158,7 +153,7 @@
         </div>
       </div>
       <div class="copy_right">
-        <p>Training with live project &amp; All rights Reseverd </p>
+        <p>Hữu Anh'store - All rights Reseverd </p>
       </div>
     </div>
   </div>

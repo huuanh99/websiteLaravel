@@ -9,6 +9,8 @@ use App\Models\orderdetails;
 use App\Models\product;
 use Format;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderNotification;
 
 include_once('app/Format/format.php');
 
@@ -60,7 +62,7 @@ class CartController extends Controller
             $request->session()->put('subtotal', $subtotal);
         }
         $request->session()->put('count', count($request->session()->get('cart')));
-        return view('cart');
+        return view('user.cart');
     }
 
     public function updatecart(Request $request)
@@ -76,7 +78,7 @@ class CartController extends Controller
         }
         $request->session()->put('cart', $cart);
         $request->session()->put('subtotal', $subtotal);
-        return view('cart');
+        return view('user.cart');
     }
 
     public function deletecart(Request $request, $id)
@@ -92,7 +94,7 @@ class CartController extends Controller
         $request->session()->put('cart', $cart);
         $request->session()->put('subtotal', $subtotal);
         $request->session()->put('count', count($request->session()->get('cart')));
-        return view('cart');
+        return view('user.cart');
     }
 
     public function insertOrder(Request $request)
@@ -121,7 +123,8 @@ class CartController extends Controller
         $request->session()->forget('cart');
         $request->session()->forget('subtotal');
         $request->session()->forget('count');
-        $request->session()->flash('message', "Bạn đã đặt hàng thành công");
-        return view('cart');
+        Mail::to($order)->send(new OrderNotification($order));
+        $request->session()->flash('message', "Bạn hãy vào email để kiểm tra thông tin đặt hàng");
+        return view('user.cart');
     }
 }
